@@ -1,1 +1,5 @@
 .trunk/*
+inspect_database
+go.mod
+go.sum
+.vscode/launch.json

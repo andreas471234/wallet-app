@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS `users` (
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL UNIQUE,
+	balance FLOAT(15,2) NOT NULL,
+	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+	updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	deleted_at timestamp
+);
+
+CREATE TABLE IF NOT EXISTS `transactions` (
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	amount FLOAT(15,2) NOT NULL,
+	transaction_type VARCHAR(100) NOT NULL,
+	user_id INTEGER NOT NULL,
+	created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+	updated_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	deleted_at timestamp,
+	FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+);
